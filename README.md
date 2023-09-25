@@ -1,230 +1,311 @@
-# :book: 0x00. ES6 Basics
-## Topics Covered
-1. ECMAScript 6 - ECMAScript 2015.
-2. Node.js and NPM
+# :book: alx-frontend-javascript
+## :page_with_curl: Topics Covered
+1. Introduction to JavaScript ES6 and Node.js.
+3. ES6 Data strucutures.
 
-## Project setup
+# :computer: Projects
+## [0x00. ES6 Basics](0x00-ES6_basic)
+Introduction to Javascript ES6 (ECMAScript 2015). Setup and using: Babel, Eslint and Jest.
+
+## [0x01. ES6 Promises](0x01-ES6_promise)
+Introduction to JavaScript Asynchoronous Programming using Promises.
+
+## [0x03-ES6_data_manipulation](0x03-ES6_data_manipulation)
+Introduction to Javascript ES6 Data Strucutre Types and Data Manipulation.
+
+> [:point_right: Go to project](0x03-ES6_data_manipulation)
+
+## [0x04. Typescript](0x04-TypeScript)
+Introduction to Typescript.
+
+### :wrench: Project setup.
 ```bash
-# Create a new node project
-npm init -y
-
-# Install babel core for project
-npm install --save-dev @babel/core
-
-# Add babel presets (babel plugins and config options)
-npm install --save-dev @babel/preset-env
-
-# Create babel config file
-touch babel.config.js
-
-# Install babel-node for project
-npm install --save-dev @babel/node
-
-# Run js file using babel node
-npx babel-node <js filename>
-
-# Run js file using package.json script
-npm run dev <filename>
-
-# Install eslint for liniting js file
-npm install --save-dev eslint
-
-# Setup eslint configuration
-npx eslint --init # or
-npm init @eslint/config
-
-# Lint a folder with js file or lint a js file.
-npx eslint <folder | filename>
-
-# Fix a js file lint issue
-npx eslint <folder | filename> --fix
-
-# Install Jest as development dependecy.
-npm install --save-dev jest
-npm uninstall --save-dev jest
-
-npm install --save-dev jest@27.0.0
-
-# Run jet test
-npm run test
-
-# Install @babel/jest
-# npm install --save-dev babel-jest
-# npm uninstall --save-dev babel-jest
+# Create project directory and readme.
+mkdir ./0x04-TypeScript/
+touch ./0x04-TypeScript/README.md
 ```
 
-# :computer: Tasks
-## [0. Const or let?](0-constants.js)
+> [:point_right: Go to project](0x04-TypeScript)
+
+
+<!---->
+## [0x02. Session authentication](0x02-Session_authentication)
+The project is about implementing a session authentication mechanism without installing any other module. The learning objectives of the project include;
+* Understanding authentication, session authentication.
+* Cookies, sending cookies, and parsing cookies.
+
+### :wrench: Project setup.
 ```bash
-touch 0-constants.js
-chmod +x 0-constants.js
-npm run lint 0-constants.js --fix
-
-touch 0-main.js
-chmod +x 0-main.js
-npm run dev ./tests/0-main.js 
+# Create project directory and readme.
+mkdir ./0x02-Session_authentication/
+touch ./0x02-Session_authentication/README.md
+cd 0x02-Session_authentication
 ```
+> [:point_right: Go to project](0x02-Session_authentication)
+<!---->
 
-## [1. Block Scope](1-block-scoped.js)
+
+<!---->
+## [0x05. NodeJS Basics](0x05-Node_JS_basic)
+This project involves learning NodeJS basics concept covered;
+1. Using NodeJS modules.
+2. Reading files.
+3. Creating HTTP servers.
+4. Using Express JS.
+5. Testing with Mocha.
+6. Using Nodemon.
+
+### :wrench: Project setup.
 ```bash
-touch 1-block-scoped.js
-chmod +x 1-block-scoped.js
-npm run lint 1-block-scoped.js --fix
+# Create project directory and readme.
+mkdir ./0x05-Node_JS_basic/
+touch ./0x05-Node_JS_basic/README.md
+cd 0x05-Node_JS_basic
 
-touch ./tests/1-main.js
-chmod +x ./tests/1-main.js
-npm run dev ./tests/1-main.js 
+touch package.json database.csv babel.config.js .eslintrc.js
+
+echo '{
+  "name": "node_js_basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint",
+    "check-lint": "lint [0-9]*.js",
+    "test": "./node_modules/mocha/bin/mocha --require babel-register --exit",
+    "dev": "nodemon --exec babel-node --presets babel-preset-env ./server.js ./database.csv"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai-http": "^4.3.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.2",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "request": "^2.88.0",
+    "sinon": "^7.5.0"
+  }
+}
+' >> package.json
+
+echo "module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          node: 'current',
+        },
+      },
+    ],
+  ],
+};
+" >> babel.config.js
+
+echo "firstname,lastname,age,field
+Johann,Kerbrou,30,CS
+Guillaume,Salou,30,SWE
+Arielle,Salou,20,CS
+Jonathan,Benou,30,CS
+Emmanuel,Turlou,40,CS
+Guillaume,Plessous,35,CS
+Joseph,Crisou,34,SWE
+Paul,Schneider,60,SWE
+Tommy,Schoul,32,SWE
+Katie,Shirou,21,CS" >> database.csv
+
+
+echo "module.exports = {
+  env: {
+    browser: false,
+    es6: true,
+    jest: true,
+  },
+  extends: [
+    'airbnb-base',
+    'plugin:jest/all',
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  plugins: ['jest'],
+  rules: {
+    'max-classes-per-file': 'off',
+    'no-underscore-dangle': 'off',
+    'no-console': 'off',
+    'no-shadow': 'off',
+    'no-restricted-syntax': [
+      'error',
+      'LabeledStatement',
+      'WithStatement',
+    ],
+  },
+  overrides:[
+    {
+      files: ['*.js'],
+      excludedFiles: 'babel.config.js',
+    }
+  ]
+};" >> .eslintrc.js
+
+# Install depedencies
+npm install
+
 ```
+> [:point_right: Go to project](0x05-Node_JS_basic)
+<!---->
 
-## [2. Arrow functions](2-arrow.js)
+
+<!---->
+## [0x03. Queuing System in JS](0x03-queuing_system_in_js)
+This project involves how to use Redis and implementing Kue as a queue system. The learning objectives include;
+1. Running a Redis server.
+2. Using a Redis client for basic operations and with Node JS.
+3. Storing hash values in Redis.
+4. Dealing with async operations.
+5. Building a basic Express app interacting with a Redis server.
+6. Building a basic Express app interacting with a Redis server and queue.
+
+### :wrench: Project setup.
 ```bash
-touch 2-arrow.js
-chmod +x 2-arrow.js
-npm run lint 2-arrow.js --fix
+# Create project directory and readme.
+mkdir ./0x03-queuing_system_in_js/
+touch ./0x03-queuing_system_in_js/README.md
+cd 0x03-queuing_system_in_js
 
-touch ./tests/2-main.js
-chmod +x ./tests/2-main.js
-npm run dev ./tests/2-main.js 
+touch package.json .babelrc
+
+echo '{
+    "name": "queuing_system_in_js",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "lint": "./node_modules/.bin/eslint",
+      "check-lint": "lint [0-9]*.js",
+      "test": "./node_modules/.bin/mocha --require @babel/register --exit",
+      "dev": "nodemon --exec babel-node --presets @babel/preset-env"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "chai-http": "^4.3.0",
+      "express": "^4.17.1",
+      "kue": "^0.11.6",
+      "redis": "^2.8.0"
+    },
+    "devDependencies": {
+      "@babel/cli": "^7.8.0",
+      "@babel/core": "^7.8.0",
+      "@babel/node": "^7.8.0",
+      "@babel/preset-env": "^7.8.2",
+      "@babel/register": "^7.8.0",
+      "eslint": "^6.4.0",
+      "eslint-config-airbnb-base": "^14.0.0",
+      "eslint-plugin-import": "^2.18.2",
+      "eslint-plugin-jest": "^22.17.0",
+      "nodemon": "^2.0.2",
+      "chai": "^4.2.0",
+      "mocha": "^6.2.2",
+      "request": "^2.88.0",
+      "sinon": "^7.5.0"
+    }
+  }
+' >> package.json
+
+echo '{
+  "presets": [
+    "@babel/preset-env"
+  ]
+}
+' >> .babelrc
+
+# Install depedencies.
+npm install
+
 ```
+> [:point_right: Go to project](0x05-Node_JS_basic)
+<!---->
 
-## [3. Parameter defaults](3-default-parameter.js)
+
+<!---->
+## [0x06. Unittests in JS](0x06-unittests_in_js)
+This project involves learning how to use Mocha to write a test suite, different assertion libraries such as Node or Chai, presenting long test suites, using spies and stubs, hooks and unit testing with Async functions.
+
+### :wrench: Project setup.
 ```bash
-touch 3-default-parameter.js
-chmod +x 3-default-parameter.js
-npm run lint 3-default-parameter.js --fix
+# Create project directory and readme.
+mkdir ./0x03-queuing_system_in_js/
+touch ./0x03-queuing_system_in_js/README.md
+cd 0x03-queuing_system_in_js
 
-touch ./tests/3-main.js
-chmod +x ./tests/3-main.js
-npm run dev ./tests/3-main.js 
+touch package.json .babelrc
+
+echo '{
+    "name": "queuing_system_in_js",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "lint": "./node_modules/.bin/eslint",
+      "check-lint": "lint [0-9]*.js",
+      "test": "./node_modules/.bin/mocha --require @babel/register --exit",
+      "dev": "nodemon --exec babel-node --presets @babel/preset-env"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "chai-http": "^4.3.0",
+      "express": "^4.17.1",
+      "kue": "^0.11.6",
+      "redis": "^2.8.0"
+    },
+    "devDependencies": {
+      "@babel/cli": "^7.8.0",
+      "@babel/core": "^7.8.0",
+      "@babel/node": "^7.8.0",
+      "@babel/preset-env": "^7.8.2",
+      "@babel/register": "^7.8.0",
+      "eslint": "^6.4.0",
+      "eslint-config-airbnb-base": "^14.0.0",
+      "eslint-plugin-import": "^2.18.2",
+      "eslint-plugin-jest": "^22.17.0",
+      "nodemon": "^2.0.2",
+      "chai": "^4.2.0",
+      "mocha": "^6.2.2",
+      "request": "^2.88.0",
+      "sinon": "^7.5.0"
+    }
+  }
+' >> package.json
+
+echo '{
+  "presets": [
+    "@babel/preset-env"
+  ]
+}
+' >> .babelrc
+
+# Install depedencies.
+npm install
+
 ```
-
-## [4. Rest parameter syntax for functions](4-rest-parameter.js)
-```bash
-touch 4-rest-parameter.js
-chmod +x 4-rest-parameter.js
-npm run lint 4-rest-parameter.js --fix
-
-touch ./tests/4-main.js
-chmod +x ./tests/4-main.js
-npm run dev ./tests/4-main.js
-```
-
-## [5. The wonders of spread syntax](5-spread-operator.js)
-```bash
-touch 5-spread-operator.js
-chmod +x 5-spread-operator.js
-npm run lint 5-spread-operator.js --fix
-
-touch ./tests/5-main.js
-chmod +x ./tests/5-main.js
-npm run dev ./tests/5-main.js
-```
-
-## [6. Take advantage of template literals](6-string-interpolation.js)
-```bash
-touch 6-string-interpolation.js
-chmod +x 6-string-interpolation.js
-npm run lint 6-string-interpolation.js --fix
-
-touch ./tests/6-main.js
-chmod +x ./tests/6-main.js
-npm run dev ./tests/6-main.js
-```
-
-## [7. Object property value shorthand syntax](7-getBudgetObject.js)
-```bash
-touch 7-getBudgetObject.js
-chmod +x 7-getBudgetObject.js
-npm run lint 7-getBudgetObject.js --fix
-
-touch ./tests/7-main.js
-chmod +x ./tests/7-main.js
-npm run dev ./tests/7-main.js
-```
-
-## [8. No need to create empty objects before adding in properties](8-getBudgetCurrentYear.js)
-```bash
-touch 8-getBudgetCurrentYear.js
-chmod +x 8-getBudgetCurrentYear.js
-npm run lint 8-getBudgetCurrentYear.js --fix
-
-touch ./tests/8-main.js
-chmod +x ./tests/8-main.js
-npm run dev ./tests/8-main.js
-```
-
-## [9. ES6 method properties](9-getFullBudget.js)
-```bash
-touch 9-getFullBudget.js
-chmod +x 9-getFullBudget.js
-npm run lint 9-getFullBudget.js --fix
-
-touch ./tests/9-main.js
-chmod +x ./tests/9-main.js
-npm run dev ./tests/9-main.js
-```
-
-## [10. For...of Loops](10-loops.js)
-```bash
-touch 10-loops.js
-chmod +x 10-loops.js
-npm run lint 10-loops.js --fix
-
-touch ./tests/10-main.js
-chmod +x ./tests/10-main.js
-npm run dev ./tests/10-main.js
-```
-
-## [11. Iterator](11-createEmployeesObject.js)
-```bash
-touch 11-createEmployeesObject.js
-chmod +x 11-createEmployeesObject.js
-npm run lint 11-createEmployeesObject.js --fix
-
-touch ./tests/11-main.js
-chmod +x ./tests/11-main.js
-npm run dev ./tests/11-main.js
-```
-
-## [12. Let's create a report object](12-createReportObject.js)
-```bash
-touch 12-createReportObject.js
-chmod +x 12-createReportObject.js
-npm run lint 12-createReportObject.js --fix
-
-touch ./tests/12-main.js
-chmod +x ./tests/12-main.js
-npm run dev ./tests/12-main.js
-```
-
-## [13. Iterating through report objects ](100-createIteratorObject.js)
-```bash
-touch 100-createIteratorObject.js
-chmod +x 100-createIteratorObject.js
-npm run lint 100-createIteratorObject.js --fix
-
-touch ./tests/100-main.js
-chmod +x ./tests/100-main.js
-npm run dev ./tests/100-main.js
-```
-
-## [14. Iterate through object](101-iterateThroughObject.js)
-```bash
-touch 101-iterateThroughObject.js
-chmod +x 101-iterateThroughObject.js
-npm run lint 101-iterateThroughObject.js --fix
-
-touch ./tests/101-main.js
-chmod +x ./tests/101-main.js
-npm run dev ./tests/101-main.js
-```
-
-# :books: References
-1. [Using Babel](https://babeljs.io/setup#installation)
-1. [Getting Started with ESLint](https://eslint.org/docs/latest/user-guide/getting-started)
-1. [npm vs npx — What’s the Difference?](https://www.freecodecamp.org/news/npm-vs-npx-whats-the-difference/)
-1. [Jestr Getting Started](https://jestjs.io/docs/27.x/getting-started)
-
+> [:point_right: Go to project](0x05-Node_JS_basic)
+<!---->
 
 # :woman: Author and Credits.
 This project was done by [SE. Henriette Uwizeyimana](https://github.com/Titisunflower).
