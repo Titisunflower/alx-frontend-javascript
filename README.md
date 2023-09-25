@@ -226,7 +226,7 @@ npm run dev ./tests/101-main.js
 1. [Jestr Getting Started](https://jestjs.io/docs/27.x/getting-started)
 
 
-# :Woman: Author and Credits.
+# :woman: Author and Credits.
 This project was done by [SE. Henriette Uwizeyimana](https://github.com/Titisunflower).
 
 :iphone: WhatsApp [+250780368567]
